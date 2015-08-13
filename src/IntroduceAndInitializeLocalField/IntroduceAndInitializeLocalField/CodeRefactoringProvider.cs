@@ -38,8 +38,8 @@ namespace IntroduceAndInitializeLocalField
 			}
 
 			var action = CodeAction.Create(
-				"Introduce and initialize field '" + underscorePrefix + "'",
-				ct => CreateFieldAsync(context, parameter, parameterName, underscorePrefix, ct));
+				"Introduce and initialize field '" + parameterName + "'",
+				ct => CreateFieldAsync(context, parameter, parameterName, parameterName, ct));
 
 			context.RegisterRefactoring(action);
 		}
@@ -52,7 +52,7 @@ namespace IntroduceAndInitializeLocalField
 				 SyntaxFactory.ExpressionStatement(
 					 SyntaxFactory.AssignmentExpression(
 						 SyntaxKind.SimpleAssignmentExpression,
-						 SyntaxFactory.IdentifierName(fieldName),
+						 SyntaxFactory.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression, SyntaxFactory.ThisExpression(), SyntaxFactory.IdentifierName(fieldName)),
 						 SyntaxFactory.IdentifierName(paramName)))));
 
 			var oldClass = parameter.FirstAncestorOrSelf<ClassDeclarationSyntax>();
