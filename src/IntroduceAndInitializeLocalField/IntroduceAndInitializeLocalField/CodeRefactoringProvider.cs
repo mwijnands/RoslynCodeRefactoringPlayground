@@ -22,7 +22,8 @@ namespace IntroduceAndInitializeLocalField
 			var root = await context.Document.GetSyntaxRootAsync(context.CancellationToken).ConfigureAwait(false);
 			var node = root.FindNode(context.Span);
 			var parameter = node as ParameterSyntax;
-			if (parameter == null)
+			if ((parameter == null)
+				|| !(node?.Parent?.Parent is ConstructorDeclarationSyntax)) // constructor parameters only
 			{
 				return;
 			}
