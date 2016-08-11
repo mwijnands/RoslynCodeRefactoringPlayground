@@ -38,8 +38,8 @@ namespace IntroduceAndInitializeLocalField
 			}
 
 			var action = CodeAction.Create(
-				"Introduce and initialize field '" + parameterName + "'",
-				ct => CreateFieldAsync(context, parameter, parameterName, parameterName, ct));
+				"Introduce and initialize field '" + underscorePrefix + "'",
+				ct => CreateFieldAsync(context, parameter, parameterName, underscorePrefix, ct));
 
 			context.RegisterRefactoring(action);
 		}
