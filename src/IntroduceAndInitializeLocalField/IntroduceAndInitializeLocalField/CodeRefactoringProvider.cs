@@ -52,7 +52,7 @@ namespace IntroduceAndInitializeLocalField
 				 SyntaxFactory.ExpressionStatement(
 					 SyntaxFactory.AssignmentExpression(
 						 SyntaxKind.SimpleAssignmentExpression,
-						 SyntaxFactory.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression, SyntaxFactory.ThisExpression(), SyntaxFactory.IdentifierName(fieldName)),
+						 SyntaxFactory.IdentifierName(fieldName),
 						 SyntaxFactory.IdentifierName(paramName)))));
 
 			var oldClass = parameter.FirstAncestorOrSelf<ClassDeclarationSyntax>();
